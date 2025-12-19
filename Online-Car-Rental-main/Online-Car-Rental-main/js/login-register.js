@@ -137,6 +137,92 @@ async function sendOTP() {
     }
 }
 
+
+async function handleForgotOTP() {
+    const email = document.getElementById("forgotEmailInput").value.trim();
+    const btn = document.getElementById("sendForgotBtn");
+
+    if (!email) {
+        Swal.fire('Wait!', 'Please enter your email address first.', 'warning');
+        return;
+    }
+
+    btn.innerText = "Sending...";
+    btn.disabled = true;
+
+    try {
+        const res = await fetch("http://localhost:3000/send-otp", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+           
+            Swal.fire({
+                title: 'Sent!',
+                text: 'Verification code sent to your email.',
+                icon: 'success',
+                confirmButtonColor: '#7d72f1'
+            });
+            
+            document.getElementById("step1").style.display = "none";
+            document.getElementById("step2").style.display = "block";
+            document.getElementById("modalDesc").innerText = "Enter the code and your new password";
+        } else {
+            Swal.fire('Error', data.message, 'error');
+        }
+    } catch (error) {
+        Swal.fire('Error', 'Connection failed', 'error');
+    } finally {
+        btn.innerText = "Send Verification Code";
+        btn.disabled = false;
+    }
+}
+
+
+async function handlePasswordReset() {
+    const email = document.getElementById("forgotEmailInput").value.trim();
+    const otp = document.getElementById("forgotOtpInput").value.trim();
+    const newPassword = document.getElementById("newPasswordInput").value;
+
+    if (!otp || !newPassword) {
+        Swal.fire('Error', 'Please fill in all fields', 'error');
+        return;
+    }
+
+    try {
+        const res = await fetch("http://localhost:3000/reset-password", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, otp, newPassword })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+           
+            Swal.fire({
+                title: 'Success!',
+                text: 'Your password has been updated successfully.',
+                icon: 'success',
+                confirmButtonText: 'Login Now',
+                confirmButtonColor: '#7d72f1' 
+            }).then(() => {
+                closeForgotModal();
+              
+            });
+        } else {
+           
+            Swal.fire('Failed', data.message, 'error');
+        }
+    } catch (error) {
+        Swal.fire('Error', 'Something went wrong with the connection', 'error');
+    }
+}
+
 // --- REGISTER FUNCTION (Modified with OTP) ---
 
 async function register() {
