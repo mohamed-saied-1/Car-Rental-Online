@@ -188,6 +188,41 @@ app.post("/login", async (req, res) => {
   );
 });
 
+
+app.post("/reset-password", async (req, res) => {
+    const { email, otp, newPassword } = req.body;
+
+    
+    if (!otpStore[email] || otpStore[email].otp !== otp) {
+        return res.json({ success: false, message: "Invalid or expired verification code!" });
+    }
+
+    
+    if (Date.now() > otpStore[email].expires) {
+        delete otpStore[email];
+        return res.json({ success: false, message: "Code has expired." });
+    }
+
+    try {
+        
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+        
+        const query = "UPDATE users SET password_hash = ? WHERE email = ?";
+        db.query(query, [hashedPassword, email], (err, result) => {
+            if (err) {
+                return res.json({ success: false, message: "Error updating database." });
+            }
+            
+            
+            delete otpStore[email];
+            res.json({ success: true, message: "Password updated successfully!" });
+        });
+    } catch (error) {
+        console.error(error);
+        res.json({ success: false, message: "Server error." });
+    }
+});
 // 2. Public Car Routes
 app.get("/cars/search", (req, res) => {
     const { location } = req.query; 
