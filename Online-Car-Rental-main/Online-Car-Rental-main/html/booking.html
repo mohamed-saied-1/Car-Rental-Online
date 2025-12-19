@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>Complete Booking | Car Rental</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="nav__header">
+          <div class="nav__logo">
+            <a href="/html/index.html" class="logo">
+              <img src="/assets/logo-white.png" alt="logo" class="logo-white" />
+              <img src="/assets/logo-dark.png" alt="logo" class="logo-dark" />
+              <span>Car Rental</span>
+            </a>
+          </div>
+          <div class="nav__menu__btn" id="menu-btn">
+            <i class="ri-menu-line"></i>
+          </div>
+        </div>
+        <ul class="nav__links" id="nav-links">
+          <li><a href="/html/index.html">Home</a></li>
+          <li><a href="/html/index.html#about">About</a></li>
+          <li><a href="/html/index.html#deals">Rental Deals</a></li>
+          <li><a href="/html/index.html#choose">Why Choose Us</a></li>
+          <li><a href="/html/index.html#client">FeedBacks</a></li>
+        </ul>
+        <div class="nav__btns" id="nav-auth-container">
+          <button class="btn" onclick="window.location.href='login.html'">Login / Sign Up</button>
+        </div>
+      </nav>
+    </header>
+
+    <section class="section__container booking__container">
+      <div class="booking__header">
+        <h2>Complete Your Booking</h2>
+        <p>Please fill in your details to complete the car rental process</p>
+      </div>
+
+      <div class="booking__content">
+        <div class="booking__summary" id="bookingSummary">
+        </div>
+
+        <form class="booking__form" id="bookingForm">
+          <div class="form__section">
+            <h3>Personal Information</h3>
+            <div class="form__grid">
+                <div class="input__group">
+                    <label for="fullName">Full Name</label>
+                    <input
+                        type="text"
+                        id="fullName"
+                        name="fullName"
+                        placeholder="Full Name (Auto-filled)"
+                        readonly
+                        class="display-only-field"
+                    />
+                </div>
+                <div class="input__group">
+                    <label for="email">Email Address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        readonly
+                        class="display-only-field"
+                    />
+                </div>
+                <div class="input__group">
+                    <label for="phone">Phone Number</label>
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="+20 (555) 123-4567"
+                        readonly
+                        class="display-only-field"
+                    />
+                </div>
+            </div>
+        </div>
+        
+          <div class="form__section">
+            <h3>Identification Details</h3>
+            <div class="form__grid">
+              <div class="input__group">
+                <label for="nationalId">National ID Number *</label>
+                <input
+                  type="text"
+                  id="nationalId"
+                  name="nationalId"
+                  placeholder="Enter your national ID"
+                  required
+                />
+              </div>
+              <div class="input__group">
+                <label for="driverLicense">Driver's License Number *</label>
+                <input
+                  type="text"
+                  id="driverLicense"
+                  name="driverLicense"
+                  placeholder="Enter your driver's license"
+                  required
+                />
+              </div>
+            </div>
+            <div class="form__grid">
+              <div class="input__group">
+                <label for="licenseExpiry">License Expiry Date *</label>
+                <input
+                  type="date"
+                  id="licenseExpiry"
+                  name="licenseExpiry"
+                  required
+                />
+              </div>
+              <div class="input__group">
+                <label for="licenseCountry">License Issuing Country *</label>
+                <select id="licenseCountry" name="licenseCountry" required>
+                  <option value="" disabled selected>Select country</option>
+                  <option value="US">United States</option>
+                  <option value="CA">Canada</option>
+                  <option value="UK">United Kingdom</option>
+                  <option value="AU">Australia</option>
+                  <option value="DE">Germany</option>
+                  <option value="FR">France</option>
+                  <option value="EG">Egypt</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="form__section">
+            <h3>Payment Information</h3>
+            <div class="form__grid">
+              <div class="input__group">
+                <label for="paymentMethod">Payment Method *</label>
+                <select id="paymentMethod" name="paymentMethod" required>
+                  <option value="" disabled selected>Select Payment Method</option>
+                  <option value="visa">Credit Card (Visa/Mastercard)</option>
+                  <option value="fawry">Fawry Pay</option>
+                  <option value="cash">Cash on Delivery</option>
+                </select>
+              </div>
+            </div>
+
+          <div class="form__section">
+            <h3>Rental Agreement</h3>
+            <div class="agreement__terms">
+              <label class="checkbox__group">
+                <input type="checkbox" id="terms" name="terms" required />
+                <span class="checkmark"></span>
+                I agree to the <a href="#" class="terms-link">Terms and Conditions</a> and 
+                <a href="#" class="terms-link">Rental Agreement</a> *
+              </label>
+              
+              <label class="checkbox__group">
+                <input type="checkbox" id="insurance" name="insurance" required />
+                <span class="checkmark"></span>
+                I confirm that I have valid insurance coverage for the rental period *
+              </label>
+              
+              <label class="checkbox__group">
+                <input type="checkbox" id="drivingRecord" name="drivingRecord" required />
+                <span class="checkmark"></span>
+                I confirm that I have a valid driving record without major violations *
+              </label>
+            </div>
+          </div>
+
+          <div class="form__actions">
+            <button type="button" class="btn btn--secondary" onclick="window.history.back()">
+              <i class="ri-arrow-left-line"></i> Back
+            </button>
+            <button type="submit" class="btn btn--primary" id="completeBookingBtn">
+              Complete Booking <i class="ri-check-line"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="section__container footer__container">
+        <div class="footer__col">
+          <div class="footer__logo">
+            <a href="/html/index.html" class="logo">
+              <img src="/assets/logo-white.png" alt="logo" />
+              <span>Car Rental</span>
+            </a>
+          </div>
+          <p>
+            We're here to provide you with the best vehicles and a seamless
+            rental experience. Stay connected for updates, special offers, and
+            more. Drive with confidence!
+          </p>
+          <ul class="footer__socials">
+            <li>
+              <a href="#"><i class="ri-facebook-fill"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="ri-twitter-fill"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="ri-linkedin-fill"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="ri-instagram-line"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="ri-youtube-fill"></i></a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Our Services</h4>
+          <ul class="footer__links">
+            <li><a href="/html/index.html">Home</a></li>
+            <li><a href="/html/index.html#about">About</a></li>
+            <li><a href="/html/index.html#deals">Rental Deals</a></li>
+            <li><a href="/html/index.html#choose">Why Choose Us</a></li>
+            <li><a href="/html/index.html#client">Testimonials</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Vehicle Model</h4>
+          <ul class="footer__links">
+            <li><a href="#">Toyota Corolla</a></li>
+            <li><a href="#">Toyota Noah</a></li>
+            <li><a href="#">Toyota Allion</a></li>
+            <li><a href="#">Toyota Premio</a></li>
+            <li><a href="#">Mistubishi Pajero</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Contact</h4>
+          <ul class="footer__links">
+            <li>
+              <a href="#">
+                <span><i class="ri-phone-fill"></i></span> +02 1234 5678
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span><i class="ri-map-pin-fill"></i></span> Cairo, Egy
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span><i class="ri-mail-fill"></i></span> info@carrental
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bar">
+      </div>
+    </footer>
+
+    <script src="/js/auth.js"></script>
+    <script src="/js/booking.js"></script>
+  </body>
+</html>

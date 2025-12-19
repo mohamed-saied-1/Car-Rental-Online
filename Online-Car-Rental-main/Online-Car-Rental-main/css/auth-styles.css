@@ -1,0 +1,206 @@
+/* Auth Pages Styles - Simple & Clean */
+/* Using variables from styles.css */
+
+.auth-page {
+    min-height: 100vh;
+    background: linear-gradient(
+        to bottom,
+        rgba(138, 121, 240, 0),
+        rgba(138, 121, 240, 0.1)
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    font-family: 'Roboto', sans-serif; /* Ensure font is used from styles.css import */
+}
+
+.auth-card {
+    background: var(--white);
+    border-radius: 1rem;
+    padding: 2.5rem;
+    max-width: 450px;
+    width: 100%;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Logo style integration */
+.auth-header .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 auto 1.5rem;
+}
+
+.auth-header .logo img {
+    max-width: 40px; 
+}
+
+.auth-header .logo span {
+    font-size: 1.75rem; 
+    font-weight: 700;
+    color: var(--primary-color-dark);
+    font-style: italic; 
+}
+
+.auth-header h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.auth-header p {
+    color: var(--text-light);
+    line-height: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 0.75rem; 
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(138, 121, 240, 0.2); 
+}
+
+.form-group input::placeholder {
+    color: var(--text-light);
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    color: var(--text-dark);
+}
+
+.forgot-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.forgot-link:hover {
+    color: var(--primary-color-dark);
+}
+
+.btn {
+    /* Using variables defined in styles.css for consistency */
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: var(--primary-color-dark);
+}
+
+.full-width {
+    width: 100%;
+}
+
+.auth-links {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.auth-links p {
+    margin-bottom: 0.75rem;
+    color: var(--text-dark);
+}
+
+.link-primary {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.link-primary:hover {
+    color: var(--primary-color-dark);
+}
+
+.back-link {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.back-link:hover {
+    color: var(--primary-color);
+}
+
+/* Message Box for Modern Inline Feedback */
+.message-box {
+    width: 100%;
+    text-align: left;
+    color: var(--text-dark);
+    background-color: var(--extra-light, #f1f2ff);
+    border: 1px solid var(--primary-color, #8a79f0);
+    padding: 10px 15px;
+    border-radius: 0.5rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    min-height: 20px;
+}
+
+.message-box.error {
+    color: #cc0000;
+    background-color: #ffeaea;
+    border-color: #cc0000;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .auth-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .form-options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+}
