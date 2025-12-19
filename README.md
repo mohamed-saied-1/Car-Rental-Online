@@ -8,7 +8,7 @@
 ## 🔑 Admin Demo Credentials
 To explore the administrative features, use the following credentials:
 * **Email:** `admin@carrental.com`
-* **Password:** `12345`
+* **Password:** `admin123`
 
 ---
 
