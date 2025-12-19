@@ -41,11 +41,10 @@ To explore the administrative features, use the following credentials:
 ---
 
 ## 🚀 How to Run
-1.  **Clone the project:** `git clone <your-repo-link>`
+1.  **Clone the project:** `git clone <[your-repo-link](https://github.com/mohamed-saied-1/Car-Rental-Online.git)>`
 2.  **Install Dependencies:** `npm install`
 3.  **Database:** Import `car_rental_db.sql` to your MySQL.
-4.  **Start Server:** `npm start`
-5.  **URL:** Open `http://localhost:3000`
+4.  **Start Server:** `node server.js`
+5.  **URL:** Open and click `http://localhost:3000`
 
----
-*Developed with ❤️ as a Full-Stack Portfolio Project.*
+---DriveNow Mobility Solutions © 2025. All rights reserved.
