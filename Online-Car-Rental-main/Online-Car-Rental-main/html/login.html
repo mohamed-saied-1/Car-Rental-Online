@@ -6,7 +6,42 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/auth-styles.css">
     <link rel="stylesheet" href="/css/styles.css"> 
-    <title>Sign In - Site Name</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Sign In - DriveNow</title>
+    <style>
+       
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .modal-header {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .modal-footer {
+            margin-top: 20px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        .step-2 { display: none; } 
+    </style>
 </head>
 <body>
     <div class="auth-page">
@@ -35,7 +70,7 @@
                     <label class="checkbox-label">
                         <input type="checkbox"> Remember Me
                     </label>
-                    <a href="#" class="forgot-link">Forgot Password?</a>
+                    <a href="#" class="forgot-link" onclick="openForgotModal()">Forgot Password?</a>
                 </div>
                 
                 <button type="button" class="btn full-width" onclick="login()">Sign In</button>
@@ -48,6 +83,59 @@
         </div>
     </div>
 
+    <div id="forgotModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Reset Password</h3>
+                <p id="modalDesc">Enter your email to receive a code</p>
+            </div>
+            
+            <div id="step1">
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="forgotEmailInput" placeholder="Enter your registered email">
+                </div>
+                <button type="button" class="btn full-width" id="sendForgotBtn" onclick="handleForgotOTP()">Send Verification Code</button>
+            </div>
+
+            <div id="step2" class="step-2">
+                <div class="form-group">
+                    <label>Verification Code</label>
+                    <input type="text" id="forgotOtpInput" placeholder="6-digit code">
+                </div>
+                <div class="form-group">
+                    <label>New Password</label>
+                    <input type="password" id="newPasswordInput" placeholder="Enter new password">
+                </div>
+                <button type="button" class="btn full-width" onclick="handlePasswordReset()">Update Password</button>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" style="background: none; border: none; color: #666; cursor: pointer;" onclick="closeForgotModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
     <script src="/js/login-register.js"></script>
+    <script>
+
+        function openForgotModal() {
+            document.getElementById('forgotModal').style.display = 'flex';
+        }
+
+        function closeForgotModal() {
+            document.getElementById('forgotModal').style.display = 'none';
+            
+            document.getElementById('step1').style.display = 'block';
+            document.getElementById('step2').style.display = 'none';
+            document.getElementById('modalDesc').innerText = 'Enter your email to receive a code';
+        }
+
+        
+        window.onclick = function(event) {
+            let modal = document.getElementById('forgotModal');
+            if (event.target == modal) closeForgotModal();
+        }
+    </script>
 </body>
 </html>
