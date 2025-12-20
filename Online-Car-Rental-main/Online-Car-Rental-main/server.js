@@ -68,8 +68,8 @@ const transporter = nodemailer.createTransport({
     port: 465,
     secure: true, 
     auth: {
-        user: 'mohamed80598@gmail.com',
-        pass: 'bvuw rchk zmyo hvpo' 
+        user: 'thelastking398@gmail.com',
+        pass: 'vjpf vwss ajxn zutp' 
     }
 });
 
@@ -269,12 +269,12 @@ app.get("/car/:id", (req, res) => {
 
 // 3. Booking Route (WITH DATE VALIDATION & PAYMENT)
 
-// دالة إرسال إيميل تأكيد الحجز
+
 function sendConfirmationEmail(bookingDetails) {
     const mailOptions = {
-        from: '"DriveNow Rental" <mohamed80598@gmail.com>', 
+        from: '"DriveNow Rental" thelastking398@gmail.com ', 
         to: bookingDetails.email, 
-        // تأكد من استخدام الـ Backticks (`) هنا
+       
         subject: `🚗 Booking Confirmed: #${bookingDetails.bookingId}`, 
         html: `
             <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #ddd; border-radius: 10px; overflow: hidden;">
@@ -322,7 +322,7 @@ app.post("/booking", (req, res) => {
         terms, insurance, drivingRecord, totalPrice, paymentMethod
     } = req.body;
 
-    // 1. التحقق من البيانات الأساسية
+    
     if (!userId || !car_id || !start || !end || !email || !phone || !nationalId || !totalPrice || !paymentMethod) {
         return res.status(400).json({ success: false, message: "Missing information. Please log in again." });
     }
