@@ -24,18 +24,20 @@ The project demonstrates a robust **Full-Stack architecture**, integrating a res
 
 The platform is divided into three specialized environments tailored to different user needs:
 
-* **👑 Admin Dashboard (The System Brain):** * **Full Control:** Oversight over all users and vehicles.
+* **👑 Admin Dashboard (The System Brain):** * **Full Control:** 
 
-    * **Approval System:** Owners are restricted from listing cars until the Admin manually reviews and approves their account to ensure quality.
+    * **Full Oversight:** Manage users, verify owners, and monitor system-wide statistics.
+    * **Manual Approval:** Owners are restricted from listing cars until an Admin reviews and approves their credentials.
+    * **System Auditing:** Access to full system logs for transparency and security analysis.
 
-    * **System Monitoring:** Real-time tracking of business statistics (Earnings, User Count, Active Cars) and detailed system logs.
+* **🚘 Owner Management Suite:**
 
-* **🚘 Owner Management Suite:** * **Fleet Management:** Owners can upload their vehicles, set daily rental prices, and provide detailed specifications.
-
+   * **Fleet Management:** Owners can upload their vehicles, set daily rental prices, and provide detailed specifications.
     * **Request Tracking:** Specialized dashboard to monitor and manage booking requests for their specific fleet.
 
-* **👤 Customer Experience:** * **Advanced Search:** Find the perfect car by filtering locations and dates.
+* **👤 Customer Experience:**
 
+    * * **Advanced Search:** Find the perfect car by filtering locations and dates.
     * **Automated Notifications:** Once a booking is marked as "Completed", the system automatically sends a professional confirmation email to the customer's inbox.
 
 
@@ -52,13 +54,23 @@ The platform is divided into three specialized environments tailored to differen
 
 ### 3. Enterprise-Grade Security
 
-* **MFA Identity Verification:** Multi-Factor Authentication via **Email OTP** during registration and recovery to verify user ownership.
+### 1. Identity & Access Management (MFA/2FA)
+* **Email Verification (OTP):** Integrated **Multi-Factor Authentication**. During registration, a unique 6-digit OTP is sent via **Nodemailer** to verify the user's identity before account activation.
+* **Secure Password Recovery:** A robust "Forgot Password" workflow using OTP verification to prevent unauthorized account takeovers.
 
-* **Cryptographic Protection:** Industry-standard **Bcryptjs** salted hashing for secure password storage.
+### 2. Data Protection & Cryptography
+* **Bcryptjs Hashing:** Passwords are never stored in plain text. We utilize salted hashing with a high cost factor to protect against **Rainbow Table** and **Brute Force** attacks.
+* **Role-Based Access Control (RBAC):** Strict server-side validation ensures that users can only access data and endpoints authorized for their specific role (Admin, Owner, or Customer).
 
-* **Advanced File Security:** Multi-layer validation for vehicle images (MIME-type filtering, filename randomization, and 2MB size limits).
+### 3. Advanced File Upload Security (Malware Defense)
+To prevent **Remote Code Execution (RCE)** and malicious script injections:
+* **MIME-Type Validation:** The server strictly filters uploads to allow only specific image formats (`JPEG`, `PNG`, `WEBP`).
+* **Filename Sanitization:** Files are automatically renamed using cryptographic timestamps to prevent **Directory Traversal** attacks.
+* **Size Limitation:** A strict **2MB limit** is enforced to mitigate **Denial of Service (DoS)** attempts.
 
-* **Accountability:** Every critical action is logged with **IP addresses** and **User-Agent** signatures to detect and identify potential attack patterns.
+### 4. Forensic Logging & Monitoring
+* **Audit Trail:** The system captures a detailed log of every critical action, including **IP Addresses**, **User Agents (Device Info)**, and timestamps.
+* **Security Dashboard:** Admins can monitor system logs in real-time to detect and identify suspicious patterns or attack types.
 
 
 
