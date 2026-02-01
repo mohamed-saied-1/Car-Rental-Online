@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/auth-styles.css">
+    <link rel="stylesheet" href="/css/styles.css"> 
+    <title>Register - DriveNow</title>
+</head>
+<body>
+    <div class="auth-page">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="logo">
+                    <img src="/assets/logo-dark.png" alt="Site Logo">
+                    <span>DriveNow</span>
+                </div>
+                <h2>Create Account</h2>
+                <p>Join our community</p>
+                <div class="message-box" id="registerMessage" style="display: none;"></div>
+            </div>
+            
+            <form id="registerForm" onsubmit="return false;">
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" id="registerFirstName" required placeholder="Enter your First name">
+                </div>
+
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" id="registerLastName" required placeholder="Enter your Last name">
+                </div> 
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <div style="display: flex; gap: 10px; align-items: stretch; height: 45px;">
+                        <input type="email" id="registerEmail" required placeholder="Enter your email" style="flex: 1; margin-bottom: 0;">
+                        <button type="button" id="sendOtpBtn" onclick="sendOTP()" 
+                                style="width: 110px; background: white; color: #7d72f1; border: 1px solid #7d72f1; border-radius: 8px; font-size: 12px; font-weight: 600; cursor: pointer; transition: 0.3s;">
+                            Send Code
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-group" id="otpGroup" style="display: none; background: #f8faff; padding: 15px; border-radius: 8px; border: 1px dashed #7d72f1; margin-top: 10px;">
+                    <label style="color: #7d72f1; font-weight: bold;">Verification Code (OTP)</label>
+                    <input type="text" id="registerOtp" placeholder="Enter 6-digit code">
+                </div>
+                
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="registerPhone" required placeholder="e.g., +20 123 456 7890">
+                </div>
+                
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="registerPassword" required placeholder="Create a password">
+                </div>
+
+                <div class="form-group" style="background: #fdfdfd; padding: 12px; border-radius: 8px; border: 1px solid #eee;">
+                    <label style="font-weight: 600; margin-bottom: 10px; display: block;">I want to join as: <span style="color: red;">*</span></label>
+                    <div style="display: flex; gap: 20px;">
+                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 14px;">
+                            <input type="radio" name="userRole" value="customer" style="width: 17px; height: 17px; accent-color: #7d72f1;"> 
+                            <span>Customer (Renter)</span>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 14px;">
+                            <input type="radio" name="userRole" value="owner" style="width: 17px; height: 17px; accent-color: #7d72f1;"> 
+                            <span>Owner (Car Provider)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button type="button" class="btn full-width" onclick="register()" style="margin-top: 10px;">Create Account</button>
+                
+                <div class="auth-links">
+                    <p>Already have an account? <a href="/html/login.html" class="link-primary">Sign In</a></p>
+                    <a href="/html/index.html" class="back-link">← Back to Home</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/js/login-register.js"></script>
+</body>
+</html>

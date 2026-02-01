@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel | Car Rental</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+
+<body>
+  <div class="sidebar" id="sidebar">
+    <div class="logo">
+      <img src="/assets/logo-white.png" width="40" alt="Logo" />
+      <h2>Admin Panel</h2>
+    </div>
+
+    <div class="menu">
+      <a class="active" data-page="dashboard"><i class="ri-dashboard-line"></i> Dashboard</a>
+      
+      <a href="#" onclick="loadUsers('customer')"><i class="ri-user-line"></i> Customers</a>
+      <a href="#" onclick="loadUsers('owner')"><i class="ri-shield-user-line"></i> Owners</a>
+      <a href="#" onclick="loadCars()"><i class="ri-car-line"></i> Cars</a>
+      <a id="logout-btn"><i class="ri-logout-box-line"></i> Logout</a>
+
+    </div>
+  </div>
+
+  <div class="main">
+    <button class="menu-toggle-btn" id="openMenu">
+      <i class="ri-menu-line"></i>
+    </button>
+    
+    <div id="content-area">
+        <div class="loading">Loading System...</div>
+    </div>
+  </div>
+
+  <div class="modal" id="genericModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Details</h3>
+        <button class="close-modal" onclick="document.getElementById('genericModal').style.display='none'">&times;</button>
+      </div>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="/js/admin.js"></script>
+</body>
+</html>
